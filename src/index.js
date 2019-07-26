@@ -1,12 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React, { useState } from "react";
+import ReactDOM from "react-dom";
+import { LocationProvider, Match } from "react-location";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import "./styles.css";
+import Basic from "./examples/Basic";
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+
+export default function App() {
+  return (
+    <LocationProvider>
+      <div className="App">
+        <Match path="/" component={Basic} />
+      </div>
+    </LocationProvider>
+  );
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
